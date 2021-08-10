@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 
 
-function PokeCard({endpoint, page}) {
+function PokeCard({endpoint}) {
     const [singlePokeData, setSinglePokeData] = useState(null)
 
     useEffect(() =>{
@@ -16,7 +16,7 @@ function PokeCard({endpoint, page}) {
                 console.error(e)
             }
         }getData()
-    },[page])
+    },[endpoint])
 
     return (
         <fieldset>
@@ -25,7 +25,7 @@ function PokeCard({endpoint, page}) {
              <img src={singlePokeData.sprites.other.dream_world.front_default} />
                  <p><b>Moves:</b> {singlePokeData.moves.length} </p>
                  <p className="weight"><b>Weight:</b> {singlePokeData.weight}</p>
-             <p><b> Abilities:</b></p>
+                 <p><b> Abilities:</b></p>
                  <ul>
                      {singlePokeData.abilities.map(({ability})=>{
                          return <li>{ability.name.toUpperCase()}</li>
